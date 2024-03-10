@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Wollen Sie einen Fehler melden?</h2>
+<mat-dialog-content #dialogcontent>
+  BUG-REPORT<br><br>
+  DEVICE: {{ errorContent?.device }}<br>
+  URL: {{ errorContent?.url }}<br>
+  COOKIES_ENABELED: {{ errorContent?.cookiesEnabled }}<br>
+  PDFVIEWER_ENABELED: {{ errorContent?.pdfViewerEnabled }}<br><br>
+  <div *ngFor="let err of errorContent?.errors">
+    ERROR:
+    {{ err?.name }}
+    {{ err?.message }}
+    <br>
+    ERROR_STACK:
+    <div *ngFor="let stack of err?.stack!.split('@')">
+      {{ stack }}
+    </div>
+    <br>
+    <br>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="toClipboard(dialogcontent)" class="btn btn-success" mat-button mat-dialog-close>In
+    die
+    Zwischenablage
+    kopieren
+  </button>
+  <button (click)="savePDF(dialogcontent)" class="btn btn-success" mat-button>Download</button>
+  <button class="btn btn-warning" mat-button mat-dialog-close>Abbrechen</button>
+</mat-dialog-actions>

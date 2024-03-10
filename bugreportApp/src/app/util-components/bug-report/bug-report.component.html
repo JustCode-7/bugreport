@@ -1,0 +1,6 @@
+<mat-toolbar *ngIf="keystroke|async">
+  Find a Bug?
+  <button (click)="reportBug()" mat-icon-button>
+    <mat-icon>bug_report</mat-icon>
+  </button>
+</mat-toolbar>
