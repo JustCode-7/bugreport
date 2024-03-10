@@ -1,0 +1,2 @@
+# bugreport
+angular bugreport componenten
